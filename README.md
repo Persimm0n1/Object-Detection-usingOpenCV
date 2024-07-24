@@ -70,9 +70,6 @@ This repository demonstrates object detection using OpenCV with a pre-trained SS
 
      ```python
      import cv2
-     
-     # Load model and class labels (same setup as above)
-
      cap = cv2.VideoCapture('video_file.mp4')
      if not cap.isOpened():
          cap = cv2.VideoCapture(0)  # Use primary camera if video file not specified
@@ -103,7 +100,33 @@ This repository demonstrates object detection using OpenCV with a pre-trained SS
      cv2.destroyAllWindows()
      ```
      - **Object Detection in Webcam:**
-import cv2
+     ```cap=cv2.VideoCapture(1)
+if not cap.isOpened():
+     cap=cv2.VideoCapture(0)
+if not cap.isOpened():
+    raise IOError('Can not open video')
+
+font_scale =3
+font = cv2.FONT_HERSHEY_PLAIN
+
+while True:
+ ret, frame =cap.read()
+    
+ ClassIndex, confidece, bbox =model.detect(frame, confThreshold=0.55)
+
+ print(ClassIndex)
+
+ if(len(ClassIndex)!=0):
+  for ClassInd, conf, boxes in zip(ClassIndex.flatten(), confidece.flatten(), bbox):
+          if(ClassInd<=80):
+            cv2.rectangle(img, boxes,(255,0,0),2)
+            cv2.putText(frame, classLabels[ClassInd-1], (boxes[0]+10, boxes[1]+40), font , fontScale=font_scale,color=(0,255,0), thickness=3)
+ cv2.imshow('webcam',frame)
+
+ if cv2.waitKey(2) & 0xFF == ord('q'):
+       break
+cap.release()
+cv2.destroyaLLWindows() ```
 
 # Load model and class labels (same setup as in previous sections)
 
