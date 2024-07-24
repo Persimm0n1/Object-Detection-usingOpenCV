@@ -100,7 +100,8 @@ This repository demonstrates object detection using OpenCV with a pre-trained SS
      cv2.destroyAllWindows()
      ```
      - **Object Detection in Webcam:**
-        ```python
+
+     ```python
      import cv2
      cap=cv2.VideoCapture(1)
      if not cap.isOpened():
@@ -129,7 +130,7 @@ This repository demonstrates object detection using OpenCV with a pre-trained SS
               break
      cap.release()
       cv2.destroyaLLWindows()
-          ```
+     ```
 
 # Load model and class labels (same setup as in previous sections)
 
