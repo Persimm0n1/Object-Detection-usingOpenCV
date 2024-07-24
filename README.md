@@ -126,7 +126,8 @@ while True:
  if cv2.waitKey(2) & 0xFF == ord('q'):
        break
 cap.release()
-cv2.destroyaLLWindows() ```
+cv2.destroyaLLWindows()
+```
 
 # Load model and class labels (same setup as in previous sections)
 
