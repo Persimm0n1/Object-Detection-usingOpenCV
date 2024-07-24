@@ -1,4 +1,4 @@
-# Object-Detection-usingOpenCV
+# Object-Detection-using OpenCV
 
 This repository demonstrates object detection using OpenCV with a pre-trained SSD MobileNet V3 model on the COCO dataset. It includes examples for detecting objects in images and videos.
 
@@ -103,17 +103,20 @@ This repository demonstrates object detection using OpenCV with a pre-trained SS
      cv2.destroyAllWindows()
      ```
      - **Object Detection in Webcam:**
+import cv2
 
-     cap = cv2.VideoCapture(1)  # Try to open secondary camera
-     if not cap.isOpened():
+# Load model and class labels (same setup as in previous sections)
+
+cap = cv2.VideoCapture(1)  # Try to open secondary camera
+if not cap.isOpened():
     cap = cv2.VideoCapture(0)  # Try to open primary camera
-      if not cap.isOpened():
+if not cap.isOpened():
     raise IOError('Cannot open video capture device')
 
-     font_scale = 3
-    font = cv2.FONT_HERSHEY_PLAIN
+font_scale = 3
+font = cv2.FONT_HERSHEY_PLAIN
 
-    while True:
+while True:
     ret, frame = cap.read()
     if not ret:
         break
@@ -130,8 +133,8 @@ This repository demonstrates object detection using OpenCV with a pre-trained SS
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-     cap.release()
-     cv2.destroyAllWindows()
+cap.release()
+cv2.destroyAllWindows()
 
 
 ## Notes
