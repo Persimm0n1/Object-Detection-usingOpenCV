@@ -74,7 +74,7 @@ This repository demonstrates object detection using OpenCV with a pre-trained SS
      if not cap.isOpened():
          cap = cv2.VideoCapture(0)  # Use primary camera if video file not specified
      if not cap.isOpened():
-         raise IOError('Cannot open video capture device')
+     raise IOError('Cannot open video capture device')
 
      font_scale = 3
      font = cv2.FONT_HERSHEY_PLAIN
