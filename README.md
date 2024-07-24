@@ -132,37 +132,6 @@ This repository demonstrates object detection using OpenCV with a pre-trained SS
       cv2.destroyaLLWindows()
      ```
 
-# Load model and class labels (same setup as in previous sections)
-
-cap = cv2.VideoCapture(1)  # Try to open secondary camera
-if not cap.isOpened():
-    cap = cv2.VideoCapture(0)  # Try to open primary camera
-if not cap.isOpened():
-    raise IOError('Cannot open video capture device')
-
-font_scale = 3
-font = cv2.FONT_HERSHEY_PLAIN
-
-while True:
-    ret, frame = cap.read()
-    if not ret:
-        break
-
-    ClassIndex, confidence, bbox = model.detect(frame, confThreshold=0.55)
-
-    for ClassInd, conf, boxes in zip(ClassIndex.flatten(), confidence.flatten(), bbox):
-        if ClassInd <= 80:  # Assuming 80 classes (adjust as per your model)
-            cv2.rectangle(frame, boxes, (255, 0, 0), 2)
-            cv2.putText(frame, class_labels[ClassInd - 1], (boxes[0] + 10, boxes[1] + 40), font, fontScale=font_scale, color=(0, 255, 0), thickness=3)
-
-    cv2.imshow('Object Detection', frame)
-
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-cap.release()
-cv2.destroyAllWindows()
-
 
 ## Notes
 
